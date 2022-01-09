@@ -1,0 +1,122 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@600;700&family=Roboto:wght@500;700&display=swap");
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+:root {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  font-weight: 600;
+  --blue_border: #0a65ed;
+  --border_radius: 10px;
+  --grey: #939393;
+  --invalid: #ed0a65;
+  scroll-behavior: smooth;
+}
+body {
+  margin: inherit;
+}
+.container {
+  padding: 2.625rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.title,
+.subtitle,
+h2 {
+  font-family: "Roboto", sans-serif;
+}
+.title {
+  font-weight: 700;
+  font-size: 4rem;
+  text-align: center;
+  span {
+    font-size: 3rem;
+  }
+}
+.form_label {
+  font-weight: 700;
+}
+.form_select,
+p {
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.25);
+  background-color: white;
+  appearance: none;
+  width: 100%;
+  border: 2px solid var(--blue_border);
+  border-radius: var(--border_radius);
+  font-size: 1rem;
+  padding: 1.375em;
+  margin: 1em 0 1.5em;
+  color: var(--grey);
+  text-overflow: ellipsis;
+  font-weight: 600;
+  option {
+    color: black;
+  }
+}
+#two_col {
+  display: flex;
+  input {
+    max-width: 6em;
+    margin-right: 1.5em;
+  }
+}
+.subtitle {
+  font-weight: 500;
+  font-size: 2.25rem;
+}
+p {
+  color: black;
+  box-shadow: none;
+}
+.hidden {
+  display: none;
+}
+.checkbox {
+  float: left;
+}
+#select_topic_div {
+  .form_select {
+    margin: 0.5em 0;
+    margin: 0;
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+  }
+  span {
+    display: block;
+    margin-left: 2em;
+  }
+  border: 2px blue solid;
+  border-radius: 10px;
+  height: 300px;
+  overflow-y: scroll;
+}
+#select_qs {
+  margin-top: 3em;
+}
+#numberOfQs {
+  &:invalid {
+    border-color: var(--invalid);
+  }
+}
+@media screen and (min-width: 650px) {
+  br {
+    display: none;
+  }
+  .title {
+    font-size: 4rem;
+    span {
+      font-size: inherit;
+    }
+  }
+}
+@media screen and (min-width: 900px) {
+  #select_topic_div {
+    .form_select {
+      padding-bottom: 0;
+    }
+  }
+}
