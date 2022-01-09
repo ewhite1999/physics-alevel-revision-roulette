@@ -5,7 +5,7 @@ A site intended to be used as an A-level physics starter and revision resource. 
 
 Clicking on a question reveals the answer, clicking again shows the question (think flashcards).
 
-[Live Site](https://ewhite1999.github.io/physics-starter/)
+[Live Site](https://ewhite1999.github.io/physics-alevel-revision-roulette/)
 
 ## Screenshot
 
@@ -14,4 +14,4 @@ Clicking on a question reveals the answer, clicking again shows the question (th
 
 ## Sister-site
 
-There is a more complex version of this site where the pupil can select a topic and subtopic to revise. Here is a [link to the sister-site repo](https://github.com/ewhite1999/retrieval-roulette).
+There is a more complex version of this site where the pupil can select a topic and subtopic to revise. Here is a [link to the sister-site repo](https://github.com/ewhite1999/physics-alevel-retrieval-starter#readme).
