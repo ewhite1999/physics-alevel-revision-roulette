@@ -27,7 +27,7 @@ const filterTopic = async () => {
 };
 
 function checkAll(checked) { // pass true or false to check or uncheck all
-  var inputs = document.getElementsByTagName("input");
+  var inputs = document.getElementsByClassName("checkbox");
   for (var i = 0; i < inputs.length; i++) {
     if (inputs[i].type == "checkbox") {
       inputs[i].checked = checked;
@@ -92,7 +92,7 @@ const createDropDown = (divId, optionsArr, eventListener) => {
     input.type = "checkbox";
     input.id = currentTopic.replace(/\s/g, "");
     input.name = currentTopic.replace(/\s/g, "");
-    input.value = "topicSelector";
+    input.value = currentTopic;
     input.classList.add("checkbox");
     formBox.appendChild(input);
     formBox.appendChild(span);
