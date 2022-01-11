@@ -26,7 +26,8 @@ const filterTopic = async () => {
   return subtopics;
 };
 
-function checkAll(checked) { // pass true or false to check or uncheck all
+function checkAll(checked) {
+  // pass true or false to check or uncheck all
   var inputs = document.getElementsByClassName("checkbox");
   for (var i = 0; i < inputs.length; i++) {
     if (inputs[i].type == "checkbox") {
@@ -37,35 +38,35 @@ function checkAll(checked) { // pass true or false to check or uncheck all
 }
 
 const createSelectAll = (div, eventListener) => {
-  button = document.createElement("button")
+  button = document.createElement("button");
 
   button.classList.add("btn", "form_btn", "form_select");
-  button.innerText = "Select All"
+  button.innerText = "Select All";
 
   button.addEventListener("click", function (e) {
-    e.preventDefault()
-    checkAll(true)
+    e.preventDefault();
+    checkAll(true);
     eventListener();
-  })
+  });
 
-  div.appendChild(button)
+  div.appendChild(button);
 
-  spacer = document.createElement("a")
-  spacer.innerText = " "
-  div.appendChild(spacer)
+  spacer = document.createElement("a");
+  spacer.innerText = " ";
+  div.appendChild(spacer);
 
-  button = document.createElement("button")
+  button = document.createElement("button");
   button.classList.add("btn", "form_btn", "form_select");
-  button.innerText = "Unselect All"
+  button.innerText = "Unselect All";
 
   button.addEventListener("click", function (e) {
-    e.preventDefault()
-    checkAll(false)
+    e.preventDefault();
+    checkAll(false);
     eventListener();
-  })
+  });
 
-  div.appendChild(button)
-}
+  div.appendChild(button);
+};
 
 // A function to create a tick-box menu.
 const createDropDown = (divId, optionsArr, eventListener) => {
@@ -121,32 +122,36 @@ const populateTopic = async () => {
 // A function to add a number input
 const selectNumber = () => {
   clearNum();
-  const form = document.querySelector(".form");
+  // only giving number selector if at least one box is checked
+  let checked = checkedBoxes(document.querySelector("#select_topic_div"));
+  if (checked.length != 0) {
+    const form = document.querySelector(".form");
 
-  const div = document.createElement("div");
-  div.classList.add("form_control");
-  div.id = "select_qs";
+    const div = document.createElement("div");
+    div.classList.add("form_control");
+    div.id = "select_qs";
 
-  const label = document.createElement("label");
-  label.htmlFor = "numberOfQs";
-  label.innerText = "How many questions? (4-10)";
-  div.appendChild(label);
+    const label = document.createElement("label");
+    label.htmlFor = "numberOfQs";
+    label.innerText = "How many questions? (4-10)";
+    div.appendChild(label);
 
-  const multiCol = document.createElement("div");
-  multiCol.id = "two_col";
-  div.appendChild(multiCol);
+    const multiCol = document.createElement("div");
+    multiCol.id = "two_col";
+    div.appendChild(multiCol);
 
-  const input = document.createElement("input");
-  input.type = "number";
-  input.id = "numberOfQs";
-  input.classList.add("form_select");
-  input.name = "numberOfQs";
-  input.min = 4;
-  input.max = 10;
-  input.addEventListener("input", generateBtn);
-  multiCol.appendChild(input);
+    const input = document.createElement("input");
+    input.type = "number";
+    input.id = "numberOfQs";
+    input.classList.add("form_select");
+    input.name = "numberOfQs";
+    input.min = 4;
+    input.max = 10;
+    input.addEventListener("input", generateBtn);
+    multiCol.appendChild(input);
 
-  form.appendChild(div);
+    form.appendChild(div);
+  }
 };
 
 // A function to create the generate btn
@@ -170,8 +175,8 @@ const generateBtn = () => {
   };
 };
 
-// What happens when the generate btn is pressed.
-const handleSubmit = async (target) => {
+// Test which checkboxes are ticked
+const checkedBoxes = (target) => {
   let checkboxes = target.querySelectorAll(".checkbox");
   let checked = [];
   checkboxes.forEach((box) => {
@@ -179,6 +184,12 @@ const handleSubmit = async (target) => {
       checked.push(box.value);
     }
   });
+  return checked;
+};
+
+// What happens when the generate btn is pressed.
+const handleSubmit = async (target) => {
+  let checked = checkedBoxes(target);
 
   // getting the number of questions
   let numberOfQuestions = target.querySelector("#numberOfQs").value;
