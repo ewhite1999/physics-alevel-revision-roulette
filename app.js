@@ -26,11 +26,54 @@ const filterTopic = async () => {
   return subtopics;
 };
 
+function checkAll(checked) { // pass true or false to check or uncheck all
+  var inputs = document.getElementsByClassName("checkbox");
+  for (var i = 0; i < inputs.length; i++) {
+    if (inputs[i].type == "checkbox") {
+      inputs[i].checked = checked;
+      // This way it won't flip flop them and will set them all to the same value which is passed into the function
+    }
+  }
+}
+
+const createSelectAll = (div, eventListener) => {
+  button = document.createElement("button")
+
+  button.classList.add("btn", "form_btn", "form_select");
+  button.innerText = "Select All"
+
+  button.addEventListener("click", function (e) {
+    e.preventDefault()
+    checkAll(true)
+    eventListener();
+  })
+
+  div.appendChild(button)
+
+  spacer = document.createElement("a")
+  spacer.innerText = " "
+  div.appendChild(spacer)
+
+  button = document.createElement("button")
+  button.classList.add("btn", "form_btn", "form_select");
+  button.innerText = "Unselect All"
+
+  button.addEventListener("click", function (e) {
+    e.preventDefault()
+    checkAll(false)
+    eventListener();
+  })
+
+  div.appendChild(button)
+}
+
 // A function to create a tick-box menu.
 const createDropDown = (divId, optionsArr, eventListener) => {
   const div = document.createElement("div");
   div.classList.add("form_control");
   div.id = divId;
+
+  createSelectAll(div, eventListener);
 
   let L = optionsArr.length;
   for (let i = 0; i < L; i++) {
